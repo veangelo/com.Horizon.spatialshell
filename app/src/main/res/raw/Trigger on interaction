@@ -1,0 +1,7 @@
+override fun onTouchEvent(event: MotionEvent): Boolean {
+    if (event.action == MotionEvent.ACTION_DOWN) {
+        soundPlayer.play()
+        openAIPanel()
+    }
+    return true
+}
