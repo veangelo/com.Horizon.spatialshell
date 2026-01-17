@@ -1,0 +1,8 @@
+fun fakeAIStats(): List<AIStat> {
+    return listOf(
+        AIStat("User Activity", "+18%"),
+        AIStat("Engagement", "3.2x"),
+        AIStat("Predicted Revenue", "$124K"),
+        AIStat("System Status", "Optimal")
+    )
+}
