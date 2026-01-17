@@ -1,0 +1,4 @@
+data class AIStat(
+    val label: String,
+    val value: String
+)
