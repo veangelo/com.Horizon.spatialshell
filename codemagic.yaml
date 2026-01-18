@@ -5,10 +5,13 @@ workflows:
     environment:
       java: 17
     scripts:
+      - name: Go to Android directory
+        script: cd android
+
       - name: Make gradlew executable
         script: chmod +x gradlew
 
       - name: Build Debug APK
         script: ./gradlew assembleDebug
     artifacts:
-      - app/build/outputs/**/*.apk
+      - android/app/build/outputs/**/*.apk
