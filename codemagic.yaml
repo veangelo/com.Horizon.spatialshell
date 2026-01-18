@@ -4,20 +4,16 @@ workflows:
     max_build_duration: 30
     environment:
       java: 17
-
     scripts:
-      - name: Verify files
+      - name: Verify Gradle Wrapper
         script: |
           ls -la
           ls -la gradlew
+          ls -la gradle/wrapper
 
-      - name: Make gradlew executable
+      - name: Build APK
         script: |
           chmod +x gradlew
-
-      - name: Build Debug APK
-        script: |
           ./gradlew assembleDebug
-
     artifacts:
       - app/build/outputs/**/*.apk
