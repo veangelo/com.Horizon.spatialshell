@@ -1,19 +1,10 @@
-workflows:
-  android-workflow:
-    name: Spatial Shell APK
-    max_build_duration: 30
-    environment:
-      java: 17
-    scripts:
-      - name: Verify Gradle Wrapper
-        script: |
-          ls -la
-          ls -la gradlew
-          ls -la gradle/wrapper
+- name: Build APK
+  script: |
+    ls -la gradle/wrapper || true
+    file gradle/wrapper/gradle-wrapper.jar || true
+    wc -c gradle/wrapper/gradle-wrapper.jar || true
+    jar tf gradle/wrapper/gradle-wrapper.jar | head -n 20 || true
 
-      - name: Build APK
-        script: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
-    artifacts:
-      - app/build/outputs/**/*.apk
+    chmod +x gradlew
+    ./gradlew --version
+    ./gradlew assembleDebug
