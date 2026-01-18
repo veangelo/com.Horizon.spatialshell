@@ -6,19 +6,18 @@ workflows:
       java: 17
 
     scripts:
-      - name: Go to Android directory
+      - name: Verify files
         script: |
-          cd android
           ls -la
+          ls -la gradlew
 
       - name: Make gradlew executable
         script: |
           chmod +x gradlew
-          ls -la gradlew
 
       - name: Build Debug APK
         script: |
           ./gradlew assembleDebug
 
     artifacts:
-      - android/app/build/outputs/**/*.apk
+      - app/build/outputs/**/*.apk
