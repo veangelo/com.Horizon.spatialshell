@@ -10,10 +10,6 @@ workflows:
       - name: Sanity check wrapper
         script: |
           set -e
-          ls -la
-          test -f ./gradlew
-          test -f gradle/wrapper/gradle-wrapper.jar
-          jar tf gradle/wrapper/gradle-wrapper.jar | grep -q "org/gradle/wrapper/GradleWrapperMain.class"
           chmod +x ./gradlew
           ./gradlew --version
 
