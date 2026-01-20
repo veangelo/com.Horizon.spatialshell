@@ -14,9 +14,10 @@ workflows:
           ./gradlew --version
 
       - name: Build debug APK
-        script: |
-          set -e
-          ./gradlew :app:assembleDebug --stacktrace --info --warning-mode all --no-daemon
+  script: |
+    set -e
+    ./gradlew :app:assembleDebug --stacktrace --warning-mode all --no-daemon
+
 
     artifacts:
       - app/build/outputs/**/*.apk
