@@ -1,23 +1,32 @@
 workflows:
-  android-workflow:
-    name: Spatial Shell APK
+  android-debug:
+    name: Android Debug Build
     max_build_duration: 60
+    instance_type: mac_mini_m1
 
     environment:
       java: 17
 
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+
     scripts:
       - name: Sanity check wrapper
         script: |
-          set -e
-          chmod +x ./gradlew
-          ./gradlew --version
+          chmod +x gradlew
+          ls -la gradlew
+          ls -la gradle/wrapper
+          file gradle/wrapper/gradle-wrapper.jar
+          jar tf gradle/wrapper/gradle-wrapper.jar | grep GradleWrapperMain
 
       - name: Build debug APK
-  script: |
-    set -e
-    ./gradlew :app:assembleDebug --stacktrace --warning-mode all --no-daemon
-
+        script: |
+          set -e
+          ./gradlew :app:assembleDebug --stacktrace --warning-mode all --no-daemon
 
     artifacts:
       - app/build/outputs/**/*.apk
