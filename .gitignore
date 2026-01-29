@@ -1,0 +1,8 @@
+
+# Local Android/Gradle state
+.gradle/
+**/.gradle/
+local.properties
+**/local.properties
+build/
+**/build/
